@@ -146,5 +146,5 @@ mvn -Drevision=${newversion} clean package
 [trunk based development]: (https://trunkbaseddevelopment.com/)
 [maven ci friendly]: (https://maven.apache.org/maven-ci-friendly.html)
 [git-commit-id-maven-plugin]: (https://github.com/git-commit-id/git-commit-id-maven-plugin)
-[maven flatten plugin](https://www.mojohaus.org/flatten-maven-plugin/)
+[maven flatten plugin]:(https://www.mojohaus.org/flatten-maven-plugin/)
 
