@@ -3,22 +3,22 @@
 For [trunk based development], every commit to master needs to be versioned, and deployed through CI/CD pipelines.
 The version each commit gets needs to be unique, and we should be able to correlate which version got deployed has 
 which changes. Git commit hash is unique for each commit, so we can use that to correlation.
-However, setting this version in very straight forward with maven.
+However, setting this version is not very straight forward with Maven.
 
-Following are few ideas and tools on how to do such dynamic versioning with maven.
+Following are few ideas and tools on how to do such dynamic versioning with Maven.
 
 
-#### git-commit-id-maven-plugin
+#### [git-commit-id-maven-plugin]
 This plugin writes the git commit information to `git.properties` file at build time, 
-which you can use for versioning.All these properties are available to you as project properties. 
+which you can use for versioning. All these properties are available to you as project properties. 
 You can use these properties directly, to set your project version, if you are working on an independent 
 project. 
 
 #### gmavenplus-plugin
 
-If you have a requirement where all your child projects needs to follow the same version scheme,
-in your maven parent file, you can take advantage of `gmavenplus-plugin` scripting section to 
-achieve this. But, caveat is that, you cannot change the project version dynamically inside maven pom.
+If you have a requirement where all your child projects needs to follow the same version scheme or 
+you are scripting a BOM file, in your Maven parent file, you can take advantage of `gmavenplus-plugin` scripting section to 
+achieve this. But, caveat is that, you cannot change the project version dynamically inside Maven pom.
 We can set version externally using `mvn versions:set` with `newVersion` property. 
 We can take advantage of `Flatten Maven Plugin` using which we can install and publish the modified 
 version of our project version.
@@ -109,7 +109,7 @@ If you have the flexibility to derive this version externally, setting the new v
 If you are using gitlab, git commit information is made available  
 https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
 
-One can take advantage of maven CI friendly variables for setting the dynamic version. 
+One can take advantage of Maven CI friendly variables for setting the dynamic version. 
 
 
 ```xml
@@ -128,7 +128,7 @@ One can take advantage of maven CI friendly variables for setting the dynamic ve
 </project>
 
 ```
-this in combination with maven `flatten plugin` as show above, you should be able to install and publish the new version.
+this in combination with Maven `flatten plugin` as shown above, you should be able to install and publish the new version.
 
 with 
 ```
